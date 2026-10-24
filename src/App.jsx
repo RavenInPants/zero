@@ -90,7 +90,7 @@ const archiveFiles = [
     author: "Система умного дома",
     summary: "Два события гостевого кода в кабинете Режиссёра.",
     log: [
-      ["19:55", "Вход в кабинет", "Код исполнительницы роли Лики"],
+      ["19:55", "Вход в кабинет", "04"],
       ["20:02", "Выход из кабинета", "Тот же гостевой код"],
     ],
   },
@@ -162,20 +162,6 @@ const archiveFiles = [
     author: "Звук",
     summary: "Фоновые шумы платформы и ночного вагона.",
     body: "Собрать отдельные слои: тормоза поезда, объявление станции, шаги в вагоне и дождь по стеклу. Шум платформы оставить мягким в диалогах, в переходах между сценами — немного усилить низкие частоты.",
-  },
-  {
-    id: "final-check",
-    order: 11,
-    name: "Архивный файл 4: карточка финальной проверки",
-    type: "Подсказка ведущей",
-    date: "25 октября 2026",
-    author: "Режиссёр",
-    summary: "Открыть только по сигналу ведущей, если группа зашла в тупик.",
-    questions: [
-      "Кому обещали роль?",
-      "Кто отсутствует на первом общем снимке?",
-      "Где этот человек находился на самом деле?",
-    ],
   },
 ];
 
@@ -388,11 +374,6 @@ export function App() {
                         {activeArchiveFile.log.map(([time, event, code]) => (
                           <div className="portal-log-row" key={time} role="row"><span role="cell">{time}</span><span role="cell">{event}</span><span role="cell">{code}</span></div>
                         ))}
-                      </div>
-                    ) : activeArchiveFile.questions ? (
-                      <div className="final-check">
-                        <p>Открыть только если группа зашла в тупик. Прочтите вопросы и вернитесь к уже полученным материалам.</p>
-                        <ol>{activeArchiveFile.questions.map((question) => <li key={question}>{question}</li>)}</ol>
                       </div>
                     ) : activeArchiveFile.shifts ? (
                       <div className="portal-log" role="table" aria-label="Итог ночных смен">

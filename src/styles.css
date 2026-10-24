@@ -874,25 +874,6 @@ input {
   margin: 0;
 }
 
-.final-check {
-  color: #d5d6d2;
-  font-size: 15px;
-  line-height: 1.7;
-}
-
-.final-check p {
-  color: #aeb8bf;
-}
-
-.final-check ol {
-  margin: 20px 0 0;
-  padding-left: 24px;
-}
-
-.final-check li + li {
-  margin-top: 10px;
-}
-
 .portal-log {
   border: 1px solid #3b4854;
 }
