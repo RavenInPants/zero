@@ -165,7 +165,32 @@ const archiveFiles = [
   },
 ];
 
-const displayedArchiveFiles = [...archiveFiles].sort((a, b) => (a.order ?? 10) - (b.order ?? 10));
+const archiveMonths = {
+  января: 0,
+  февраля: 1,
+  марта: 2,
+  апреля: 3,
+  мая: 4,
+  июня: 5,
+  июля: 6,
+  августа: 7,
+  сентября: 8,
+  октября: 9,
+  ноября: 10,
+  декабря: 11,
+};
+
+const archiveDateTimestamp = (date) => {
+  const match = date.match(/^(\d{1,2})\s+(\S+)(?:\s+(\d{4}))?$/);
+  if (!match) return 0;
+
+  const [, day, month, year = "2026"] = match;
+  return Date.UTC(Number(year), archiveMonths[month] ?? 0, Number(day));
+};
+
+const displayedArchiveFiles = [...archiveFiles].sort((a, b) =>
+  archiveDateTimestamp(b.date) - archiveDateTimestamp(a.date) || a.name.localeCompare(b.name, "ru"),
+);
 
 export function App() {
   const [archiveOpen, setArchiveOpen] = useState(false);
